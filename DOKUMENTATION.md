@@ -1,6 +1,6 @@
 # Dokumentation – PPCWeb (ppc.at)
 
-Stand: **2026-11-20** · Aktuelle Version: siehe Datei [`VERSION`](VERSION) und Footer auf der Startseite.
+Stand: **2026-11-20** · Aktuelle Version: siehe Datei [`VERSION`](VERSION) und Footer auf der Startseite (`theweb/index.html`).
 
 Diese Dokumentation beschreibt Aufbau, Versionierung, Pflege und Deployment der Website von **Penguin Power Communication**.
 
@@ -22,37 +22,55 @@ Inhaber / Ansprechpartner: **Ing. Wolfgang Preier** · `preier@ppc.at` · `+43 6
 ## 2. Verzeichnisstruktur
 
 ```
-PPCWeb/
-├── index.html              Startseite (enthält Versionsnummer)
-├── security.html           IT-Security
-├── administration.html     IT-Administration
-├── referenzen.html         Kundenreferenzen
-├── partner.html            Partner (u. a. Malama IT)
-├── kontakt.html            Kontakt (Telefon / E-Mail / Adresse)
-├── impressum.html          Impressum & Datenschutz
-├── VERSION                 Aktuelle Versionsnummer (eine Zeile)
-├── CHANGELOG.md            Alle Änderungen mit Datum & Version
-├── DOKUMENTATION.md        Diese Datei
-├── README.md               Kurzüberblick (auch auf Englisch lesbar)
+PPCWeb/                          ← Projekt / Git-Repo
+├── VERSION                      Aktuelle Versionsnummer (eine Zeile)
+├── CHANGELOG.md                 Alle Änderungen mit Datum & Version
+├── DOKUMENTATION.md             Diese Datei
+├── README.md                    Kurzüberblick
 ├── .gitignore
-├── .well-known/
-│   └── security.txt        Security-Kontakt für Forscher
-└── assets/
-    ├── css/style.css       Design, Farben, Layout, Dark Mode
-    ├── js/main.js          Menü + Theme-Umschalter
-    └── images/
-        ├── logo.jpg        PPC-Logo (Wortmarke + Pinguin)
-        ├── penguin.jpg     Pinguin-Motiv (Hero)
-        └── Malama_IT_Logo.jpg
+└── theweb/                      ← Document Root: nur das auf den Webserver
+    ├── index.html               Startseite (enthält Versionsnummer)
+    ├── security.html / administration.html / …
+    ├── kontakt.html / impressum.html / 404.html
+    ├── robots.txt / sitemap.xml / humans.txt
+    ├── site.webmanifest / .htaccess
+    ├── .well-known/security.txt
+    └── assets/
+        ├── css/style.css
+        ├── js/main.js
+        └── images/ (logo, penguin, favicon.svg, …)
 ```
 
 | Datei / Ordner | Aufgabe |
 |---|---|
-| `index.html` | Einstieg; Hero; Version im `<meta>` und Footer |
-| `assets/css/style.css` | Gesamtes Styling (CSS-Variablen für Theme) |
-| `assets/js/main.js` | Mobiles Menü, Light/Dark, `localStorage` |
-| `VERSION` | Maschinenlesbare Versionsnummer |
-| `CHANGELOG.md` | Historie jeder Patch-Version |
+| `theweb/` | Alles, was öffentlich ausgeliefert wird |
+| `theweb/index.html` | Einstieg; Hero; Version im `<meta>` und Footer |
+| `theweb/assets/css/style.css` | Gesamtes Styling (CSS-Variablen für Theme) |
+| `theweb/assets/js/main.js` | Mobiles Menü, Light/Dark, `localStorage` |
+| `theweb/.well-known/security.txt` | Offizieller Sicherheitskontakt (siehe unten) |
+| `VERSION` | Maschinenlesbare Versionsnummer (nur im Repo) |
+| `CHANGELOG.md` | Historie jeder Patch-Version (nur im Repo) |
+
+### Was ist `.well-known` / `security.txt`?
+
+Das ist **kein** geheimes Systemverzeichnis, sondern ein **Internet-Standard**:
+
+- URL: `https://ppc.at/.well-known/security.txt`
+- Inhalt: Wohin Sicherheitsforscher eine Lücke melden sollen (E-Mail, Telefon, Sprachen, Policy)
+- Gehört zu den **Web-Dateien** und muss im Document Root liegen (bei uns also in `theweb/`)
+- Für Besucher der normalen Website unsichtbar; Tools und Suchende erwarten genau diesen Pfad
+
+### Weitere Profi-Dateien in `theweb/`
+
+| Datei | Zweck |
+|---|---|
+| `robots.txt` | Suchmaschinen: was crawlen darf + Link zur Sitemap |
+| `sitemap.xml` | Liste aller öffentlichen Seiten für Google & Co. |
+| `humans.txt` | Menschliche Projektinfos (Autor, Kontakt) |
+| `site.webmanifest` | Name, Farben, Icon (Browser / „Zum Home-Bildschirm“) |
+| `assets/images/favicon.svg` | Browser-Tab-Icon |
+| `404.html` | Freundliche Fehlerseite |
+| `.htaccess` | Apache: Security-Header, Kompression, 404 (nur Apache) |
 
 ---
 
@@ -68,33 +86,33 @@ PPCWeb/
  └─────── Major 0 (Aufbau / Redesign-Phase)
 ```
 
-Aktuell: **0.1.1.1** (erste Patch-Version der Basis 0.1.1).
+Aktuell: **0.1.1.3**
 
 ### Wo steht die Version?
 
 | Ort | Inhalt |
 |---|---|
-| `VERSION` | Nur die Nummer, z. B. `0.1.1.1` |
-| `index.html` | `<meta name="version" content="…">` und Footer `v0.1.1.1` |
+| `VERSION` | Nur die Nummer, z. B. `0.1.1.3` |
+| `theweb/index.html` | `<meta name="version" content="…">` und Footer |
 | `CHANGELOG.md` | Abschnitt `## [0.1.1.x] – JJJJ-MM-TT` |
-| Git-Tag (optional) | `v0.1.1.1` |
+| Git-Tag (optional) | `v0.1.1.3` |
 
 ### Neue Version veröffentlichen (Checkliste)
 
-1. Änderungen am Code/Content vornehmen
-2. In `VERSION` die Patchnummer erhöhen (z. B. `0.1.1.1` → `0.1.1.2`)
-3. In `index.html` beide Stellen anpassen (`meta` + Footer + HTML-Kommentar)
-4. In `CHANGELOG.md` neuen Abschnitt mit **Datum** und **Nummer** oben einfügen (`Added` / `Changed` / `Removed` / `Fixed`)
-5. Optional: diese Doku aktualisieren, wenn Struktur oder Abläufe sich ändern
+1. Änderungen am Code/Content in `theweb/` vornehmen
+2. In `VERSION` die Patchnummer erhöhen (z. B. `0.1.1.3` → `0.1.1.4`)
+3. In `theweb/index.html` beide Stellen anpassen (`meta` + Footer + HTML-Kommentar)
+4. In `CHANGELOG.md` neuen Abschnitt mit **Datum** und **Nummer** oben einfügen
+5. Optional: diese Doku aktualisieren; bei neuen Seiten `sitemap.xml` ergänzen
 6. Git committen (und pushen)
-7. Optional: `git tag v0.1.1.2` und Tag pushen
-8. Dateien auf den Webserver deployen (siehe Abschnitt 5)
+7. Optional: `git tag v0.1.1.4` und Tag pushen
+8. **Inhalt von `theweb/`** auf den Webserver deployen (siehe Abschnitt 5)
 
 ---
 
 ## 4. Design & Technik (Kurz)
 
-### Farben (CSS-Variablen in `style.css`)
+### Farben (CSS-Variablen in `theweb/assets/css/style.css`)
 
 - Hintergrund hell: `--bg` / warm: `--bg-warm`
 - Text: `--text`, gedämpft: `--text-muted`
@@ -118,17 +136,22 @@ Nunito über [Bunny Fonts](https://fonts.bunny.net) (Datenschutzhinweis im Impre
 
 Die Seite ist **fertig zum Hochladen** – keine Installation, kein `npm build`.
 
-1. Lokal prüfen: `index.html` im Browser öffnen oder  
-   `python -m http.server 8000` im Projektordner
-2. Per FTP/SFTP/Panel alle Dateien und Ordner hochladen:
+1. Lokal prüfen:
+   ```bash
+   cd theweb
+   python -m http.server 8000
+   ```
+2. Per FTP/SFTP/Panel **nur den Inhalt von `theweb/`** hochladen:
    - alle `*.html`
    - Ordner `assets/`
    - Ordner `.well-known/`
-   - optional die Markdown-Dateien (müssen nicht öffentlich sein; schaden aber nicht)
-3. Document Root so setzen, dass `index.html` die Startseite ist
-4. `https://ihre-domain/` aufrufen und Header, Telefon-Links, Dark Mode, Mobilmenü testen
+3. Document Root = Ordner, in dem `index.html` liegt (also der hochgeladene `theweb`-Inhalt)
+4. Prüfen: Startseite, Telefon-Links, Dark Mode, Mobilmenü  
+   und optional: `https://ppc.at/.well-known/security.txt`
 
-**Tipp:** Nach dem Upload den Browser-Cache leeren oder hart neu laden (Strg+F5), damit CSS/JS sicher aktualisiert werden.
+**Tipp:** Nach dem Upload hart neu laden (Strg+F5).
+
+Markdown-Dateien (`README`, `CHANGELOG`, …) gehören **nicht** zwingend auf den öffentlichen Server.
 
 ---
 
@@ -136,20 +159,21 @@ Die Seite ist **fertig zum Hochladen** – keine Installation, kein `npm build`.
 
 | Ziel | Datei |
 |---|---|
-| Startseite / Hero / CTA | `index.html` |
-| Security-Leistungen | `security.html` |
-| Administration | `administration.html` |
-| Kundenliste | `referenzen.html` |
-| Partner / Malama | `partner.html` |
-| Telefon, E-Mail, Standort | `kontakt.html` (+ Footer auf allen Seiten) |
-| Rechtliches | `impressum.html` |
-| Farben, Abstände, Layout | `assets/css/style.css` |
-| Menü / Theme-Verhalten | `assets/js/main.js` |
-| Logo / Pinguin / Partnerlogo | `assets/images/` |
+| Startseite / Hero / CTA | `theweb/index.html` |
+| Security-Leistungen | `theweb/security.html` |
+| Administration | `theweb/administration.html` |
+| Kundenliste | `theweb/referenzen.html` |
+| Partner / Malama | `theweb/partner.html` |
+| Telefon, E-Mail, Standort | `theweb/kontakt.html` (+ Footer auf allen Seiten) |
+| Rechtliches | `theweb/impressum.html` |
+| Farben, Abstände, Layout | `theweb/assets/css/style.css` |
+| Menü / Theme-Verhalten | `theweb/assets/js/main.js` |
+| Logo / Pinguin / Partnerlogo | `theweb/assets/images/` |
+| Security-Kontakt | `theweb/.well-known/security.txt` |
 
-**Telefonnummer ändern:** Suche projektweit nach `+436648585826` und `+43 664 8585826` und ersetze konsistent (Header, Hero, Kontakt, Footer, Impressum, `security.txt`).
+**Telefonnummer ändern:** Suche in `theweb/` nach `+436648585826` und `+43 664 8585826`.
 
-**Header/Footer:** Aktuell in jeder HTML-Datei kopiert. Bei Nav-Änderungen alle Seiten anpassen (oder später auf Includes/SSG umstellen).
+**Header/Footer:** In jeder HTML-Datei kopiert – Nav-Änderungen auf allen Seiten in `theweb/`.
 
 ---
 
@@ -166,8 +190,8 @@ Die Seite ist **fertig zum Hochladen** – keine Installation, kein `npm build`.
 - Änderungen versionieren: Commit mit aussagekräftiger Message
 - Remote (GitHub): `https://github.com/WPreier/PPCWeb.git`
 - Empfohlen: nach jeder Patch-Version committen **und** deployen
-- Zusätzliche ZIP-Sicherung (außerhalb des Repo-Ordners):  
-  `..\PPCWeb_Backup_0.1.1.1_2026-11-20.zip` (bei neuen Versionen analog benennen)
+- ZIP-Sicherungen außerhalb des Repo-Ordners, z. B.  
+  `..\PPCWeb_Backup_0.1.1.x_JJJJ-MM-TT.zip`
 
 Siehe auch `README.md` und `CHANGELOG.md`.
 
@@ -186,6 +210,8 @@ Siehe auch `README.md` und `CHANGELOG.md`.
 
 | Version | Datum | Kurzbeschreibung |
 |---|---|---|
+| 0.1.1.3 | 2026-11-20 | Profi-Erweiterungen (SEO, security.txt, 404, …) |
+| 0.1.1.2 | 2026-11-20 | Web-Dateien nach `theweb/` |
 | 0.1.1.1 | 2026-11-20 | Redesign warm, Phone-first, Doku & Versionierung |
 | 1.0.0 | 2026-11-20 | Erster Entwurf (altes Schema, abgelöst) |
 

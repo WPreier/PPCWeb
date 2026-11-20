@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seite nicht gefunden | Penguin Power Communication</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f0b429" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d1b2a" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=nunito:400,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <main class="section" style="min-height:70vh;display:flex;align-items:center;justify-content:center;">
+    <div class="cta" style="max-width:560px;width:100%;">
+      <div class="penguin-box" style="width:160px;height:160px;margin:0 auto 1.5rem;padding:0.75rem;">
+        <img src="assets/images/penguin.jpg" alt="" class="penguin-logo" width="120" height="120">
+      </div>
+      <h1 style="font-size:1.8rem;margin-bottom:0.5rem;">404 – Seite nicht gefunden</h1>
+      <p>Der Pinguin hat gesucht, aber diese Seite gibt es hier nicht. Zurück zur Startseite oder einfach anrufen.</p>
+      <div class="cta-actions">
+        <a href="index.html" class="btn btn-primary">Zur Startseite</a>
+        <a href="tel:+436648585826" class="btn btn-phone">Anrufen</a>
+      </div>
+    </div>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

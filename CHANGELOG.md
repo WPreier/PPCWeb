@@ -8,8 +8,35 @@ Beispiel: `0.1.1.1` = Basis 0.1.1, Patch 1.
 Bei jeder Veröffentlichung:
 1. Patchnummer erhöhen (Datei `VERSION`)
 2. Eintrag hier mit **Datum** und **Versionsnummer** ergänzen
-3. Versionsnummer in `index.html` aktualisieren (`meta name="version"` und Footer)
-4. Git-Commit (und Tag optional: `v0.1.1.1`)
+3. Versionsnummer in `theweb/index.html` aktualisieren (`meta name="version"` und Footer)
+4. Git-Commit (und Tag optional: `v0.1.1.3`)
+
+---
+
+## [0.1.1.3] – 2026-11-20
+
+### Added
+- `robots.txt`, `sitemap.xml`, `humans.txt`, `site.webmanifest`, Favicon (SVG)
+- Open-Graph- und Twitter-Meta-Tags, Canonical-URLs, `theme-color` auf allen Seiten
+- JSON-LD (`ProfessionalService`) auf der Startseite
+- Skip-Link für Barrierefreiheit
+- Professionelle `404.html`
+- Apache-`.htaccess` (Security-Header, Kompression, 404)
+- `security.txt` um `Policy` ergänzt
+
+### Notes
+- Erwartete Profi-Erweiterungen für SEO, Sicherheitshinweise und Social Sharing
+
+---
+
+## [0.1.1.2] – 2026-11-20
+
+### Changed
+- Alle auslieferbaren Web-Dateien nach `theweb/` verschoben (HTML, `assets/`, `.well-known/`)
+- Dokumentation und README an die neue Struktur angepasst
+
+### Notes
+- Projektroot enthält Doku/Versionierung; Document Root auf dem Server = Inhalt von `theweb/`
 
 ---
 

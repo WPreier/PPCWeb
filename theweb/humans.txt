@@ -1,0 +1,13 @@
+/* TEAM */
+Inhaber: Ing. Wolfgang Preier
+Firma: Penguin Power Communication
+Kontakt: preier@ppc.at
+Standort: Pilgersdorf, Österreich
+Telefon: +43 664 8585826
+
+/* SITE */
+Letzte Aktualisierung: 2026-11-20
+Sprache: Deutsch
+Standards: HTML5, CSS3, JavaScript
+Doctype: HTML5
+Technik: Statische Website

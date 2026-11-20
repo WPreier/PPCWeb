@@ -1,0 +1,31 @@
+# PPCWeb – Apache-Empfehlungen (nur wirksam, wenn Apache .htaccess erlaubt)
+
+Options -Indexes
+AddDefaultCharset UTF-8
+
+<IfModule mod_mime.c>
+  AddType image/svg+xml .svg
+  AddType application/manifest+json .webmanifest
+  AddType text/plain .txt
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header set X-XSS-Protection "0"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/javascript application/json image/svg+xml
+</IfModule>
+
+# HTTPS erzwingen (aktivieren, wenn SSL am Server konfiguriert ist):
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} !=on
+#   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>

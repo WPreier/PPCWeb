@@ -26,44 +26,39 @@ Persönlicher IT-Dienstleister in Österreich: Administration und Security. Warm
 
 Statisches HTML / CSS / JS – kein Build nötig.
 
-- CSS-Variablen für Theming (`assets/css/style.css`)
-- JS: Theme + mobiles Menü (`assets/js/main.js`)
+- CSS-Variablen für Theming (`theweb/assets/css/style.css`)
+- JS: Theme + mobiles Menü (`theweb/assets/js/main.js`)
 - Schrift: Nunito (Bunny Fonts)
 
 ## Struktur
 
 ```
 .
-├── index.html                 ← Versionsnummer hier (meta + Footer)
-├── administration.html
-├── security.html
-├── referenzen.html
-├── partner.html
-├── kontakt.html
-├── impressum.html
-├── VERSION
-├── CHANGELOG.md
-├── DOKUMENTATION.md
-├── assets/
-│   ├── css/style.css
-│   ├── js/main.js
-│   └── images/
-└── .well-known/security.txt
+├── VERSION / CHANGELOG.md / DOKUMENTATION.md / README.md
+└── theweb/                      ← auf den Webserver hochladen
+    ├── index.html               ← Versionsnummer (meta + Footer)
+    ├── *.html / 404.html
+    ├── robots.txt / sitemap.xml / humans.txt
+    ├── site.webmanifest
+    ├── .htaccess                ← Apache
+    ├── assets/…
+    └── .well-known/security.txt
 ```
 
 ## Lokal testen
 
 ```bash
+cd theweb
 python -m http.server 8000
 ```
 
-Dann `http://localhost:8000` öffnen – oder `index.html` direkt im Browser.
+Dann `http://localhost:8000` öffnen.
 
 ## Neue Patch-Version
 
-1. Code ändern  
-2. `VERSION` erhöhen (z. B. `0.1.1.2`)  
-3. `index.html` Version anpassen  
+1. Code in `theweb/` ändern  
+2. `VERSION` erhöhen (z. B. `0.1.1.3`)  
+3. `theweb/index.html` Version anpassen  
 4. Eintrag in `CHANGELOG.md` mit Datum  
 5. Commit / Deploy  
 

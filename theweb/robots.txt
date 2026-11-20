@@ -1,0 +1,5 @@
+# Penguin Power Communication – ppc.at
+User-agent: *
+Allow: /
+
+Sitemap: https://ppc.at/sitemap.xml
