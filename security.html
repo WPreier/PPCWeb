@@ -4,16 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IT Security | Penguin Power Communication</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="IT-Security von Penguin Power Communication – Firewalls, Virenschutz, VPN und Schulungen, verständlich und zuverlässig.">
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=nunito:400,600,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <header class="header">
-    <nav class="nav">
+    <nav class="nav" aria-label="Hauptnavigation">
       <a href="index.html" class="logo">
-        <img src="assets/images/logo.jpg" alt="PPC Logo">
+        <img src="assets/images/logo.jpg" alt="Penguin Power Communication">
       </a>
-                  <ul class="nav-links">
+      <ul class="nav-links">
         <li><a href="index.html">Start</a></li>
         <li><a href="security.html" class="active">Security</a></li>
         <li><a href="administration.html">Administration</a></li>
@@ -21,23 +33,33 @@
         <li><a href="partner.html">Partner</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Theme wechseln" title="Light / Dark">☀️</button>
-      <a href="https://malama.at" target="_blank" rel="noopener" class="malama-link" title="malama.at"><img src="assets/images/Malama_IT_Logo.jpg" alt="Malama IT" class="malama-logo"></a>
-      <button class="menu-toggle" aria-label="Menü">☰</button>
+      <div class="nav-actions">
+        <a href="tel:+436648585826" class="nav-phone" title="Jetzt anrufen">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+43 664 8585826</span>
+        </a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Dunkelmodus aktivieren">
+          <svg class="icon icon-sm icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon icon-sm icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
     </nav>
   </header>
 
   <main>
     <div class="page-header">
       <h1>IT Security</h1>
-      <p>Weil digitale Sicherheit heute genauso wichtig ist wie der Schlüssel zur Eingangstür!</p>
+      <p>Weil digitale Sicherheit heute genauso wichtig ist wie der Schlüssel zur Eingangstür.</p>
     </div>
 
     <section class="section">
       <div class="card" style="margin-bottom:2rem;">
         <p>Ein gutes Schloss schützt nur dann, wenn es abgeschlossen ist. In der digitalen Welt ist es nicht anders. Sie würden keine Tür offenlassen – warum also in Sachen IT-Sicherheit Kompromisse eingehen?</p>
-        <p style="margin-top:1rem;">Wir sorgen dafür, dass niemand unbemerkt durch Ihre digitalen Türen und Fenster schlüpft. Ihre Firewalls, Ihr Virenschutz, Ihre VPN-Zugänge: Bei uns bleibt nichts dem Zufall überlassen. Wir kontrollieren, überwachen und sichern – automatisiert, manuell und vor allem: regelmäßig.</p>
-        <p style="margin-top:1rem;"><strong>Damit Ihr Unternehmen nicht überrascht, sondern geschützt wird!</strong></p>
+        <p style="margin-top:1rem;">Wir sorgen dafür, dass niemand unbemerkt durch Ihre digitalen Türen und Fenster schlüpft. Firewalls, Virenschutz und sichere Zugänge: Bei uns bleibt nichts dem Zufall überlassen. Wir kontrollieren, überwachen und sichern – regelmäßig und nachvollziehbar.</p>
+        <p style="margin-top:1rem;"><strong>Damit Ihr Unternehmen nicht überrascht, sondern geschützt wird.</strong></p>
       </div>
 
       <div class="section-header">
@@ -45,44 +67,60 @@
       </div>
       <div class="grid grid-2">
         <div class="card">
-          <div class="card-icon">🛡️</div>
-          <h3>Firewall-Management &amp; Echtzeit-Überwachung</h3>
-          <p>Mehrmals tägliche Firewall-Checks zur Angriffserkennung &amp; Abwehr.</p>
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Firewall-Management &amp; Überwachung</h3>
+          <p>Regelmäßige Checks zur Angriffserkennung und Abwehr – damit Einbruchsversuche früh auffallen.</p>
         </div>
         <div class="card">
-          <div class="card-icon">🔐</div>
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
           <h3>VPN-Zugangskontrolle</h3>
-          <p>Protokollierung und sichere Remote-Arbeitsplätze.</p>
+          <p>Sichere Remote-Arbeitsplätze und nachvollziehbare Zugriffe – wer darf rein, und wann?</p>
         </div>
         <div class="card">
-          <div class="card-icon">🦠</div>
-          <h3>Virenschutz &amp; Endpoint-Security</h3>
-          <p>Regelmäßige Antivirus-Prüfungen – lokal und netzwerkseitig. Monitoring aller Geräte.</p>
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9.5 12.5 11 14l3.5-3.5"/></svg>
+          </div>
+          <h3>Virenschutz &amp; Geräteschutz</h3>
+          <p>Regelmäßige Prüfungen lokal und im Netzwerk. Monitoring aller Geräte.</p>
         </div>
         <div class="card">
-          <div class="card-icon">🔌</div>
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+          </div>
           <h3>Switches &amp; Zugangsabsicherung</h3>
-          <p>Portsicherung, RADIUS, RSA, Smart Token, Badge-Zugang.</p>
+          <p>Portsicherung und moderne Zugangskontrolle (z. B. Token oder Badge) – nur berechtigte Personen kommen rein.</p>
         </div>
         <div class="card">
-          <div class="card-icon">🌐</div>
-          <h3>Firewalls &amp; UTM</h3>
-          <p>Router, Gateways, klassische und Linux-Firewalls, UTM-Systeme (Firewall, Spamfilter u.v.m.).</p>
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+          </div>
+          <h3>Firewalls &amp; Gateways</h3>
+          <p>Router, Gateways und Firewall-Systeme inkl. Spamfilter und weiterer Schutzbausteine.</p>
         </div>
         <div class="card">
-          <div class="card-icon">📡</div>
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a8 8 0 0 1 14 0"/><path d="M8.5 15.5a4.5 4.5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg>
+          </div>
           <h3>VPN, Proxies &amp; Filter</h3>
-          <p>SoftEther VPN-Server, Reverse Proxies mit DMZ, Webfilter, Logging, Surftrennung.</p>
+          <p>Sichere Verbindungen, Webfilter und getrennte Surfumgebungen – klar dokumentiert.</p>
         </div>
         <div class="card">
-          <div class="card-icon">👥</div>
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
           <h3>Sicherheitsschulungen</h3>
-          <p>Verständlich &amp; praxisnah – weil der Faktor Mensch oft das größte Einfallstor ist.</p>
+          <p>Verständlich und praxisnah – weil der Mensch oft das größte Einfallstor ist.</p>
         </div>
         <div class="card">
-          <div class="card-icon">⚖️</div>
-          <h3>Lastausgleich &amp; Failover</h3>
-          <p>Mehrfache Internetanbindung für hohe Verfügbarkeit.</p>
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg>
+          </div>
+          <h3>Lastausgleich &amp; Ausfallsicherheit</h3>
+          <p>Mehrfache Internetanbindung für hohe Verfügbarkeit, wenn eine Leitung ausfällt.</p>
         </div>
       </div>
     </section>
@@ -90,8 +128,11 @@
     <section class="section">
       <div class="cta">
         <h2>Jetzt IT-Sicherheit prüfen lassen</h2>
-        <p>Unverbindlich. Vertraulich. Verständlich.<br>Damit Sie ruhig schlafen können – und Ihre IT geschützt bleibt.</p>
-        <a href="kontakt.html" class="btn btn-primary">Anfrage senden</a>
+        <p>Unverbindlich. Vertraulich. Verständlich. Damit Sie ruhig schlafen können.</p>
+        <div class="cta-actions">
+          <a href="tel:+436648585826" class="btn btn-phone">Anrufen</a>
+          <a href="kontakt.html" class="btn btn-primary">Kontakt</a>
+        </div>
       </div>
     </section>
   </main>
@@ -100,21 +141,30 @@
     <div class="footer-inner">
       <div>
         <h4>Penguin Power Communication</h4>
-        <p>Ing. Wolfgang Preier<br>IT-Dienstleister Österreich<br>+43 664 8585826<br>preier@ppc.at</p>
+        <p>Ing. Wolfgang Preier<br>IT-Dienstleister · Ostösterreich</p>
+        <p><a class="footer-phone" href="tel:+436648585826">+43 664 8585826</a></p>
+        <p><a class="footer-mail" href="mailto:preier@ppc.at">preier@ppc.at</a></p>
       </div>
       <div>
         <h4>Seiten</h4>
-        <p><a href="security.html">Security</a><br>
-        <a href="administration.html">Administration</a></p>
+        <p>
+          <a href="security.html">Security</a><br>
+          <a href="administration.html">Administration</a><br>
+          <a href="referenzen.html">Referenzen</a><br>
+          <a href="partner.html">Partner</a><br>
+          <a href="kontakt.html">Kontakt</a>
+        </p>
       </div>
       <div>
         <h4>Rechtliches</h4>
-        <p><a href="impressum.html">Impressum</a><br>
-        <a href="impressum.html#datenschutz">Datenschutz</a></p>
+        <p>
+          <a href="impressum.html">Impressum</a><br>
+          <a href="impressum.html#datenschutz">Datenschutz</a>
+        </p>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Penguin Power Communication · made with Grok</span>
+      <span>© 2026 Penguin Power Communication</span>
       <span>ppc.at</span>
     </div>
   </footer>

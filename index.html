@@ -3,20 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Penguin Power Communication | IT die funktioniert</title>
-  <meta name="description" content="Persönlicher IT-Dienstleister in Österreich. Administration, Security, Hosting und mehr – seit über 20 Jahren.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Penguin Power Communication | IT, die funktioniert</title>
+  <meta name="description" content="Persönlicher IT-Dienstleister in Ostösterreich. Administration und Security – verständlich, verlässlich, seit über 20 Jahren.">
+  <meta name="version" content="0.1.1.1">
+  <!-- PPCWeb Version 0.1.1.1 | 2026-11-20 | siehe CHANGELOG.md und DOKUMENTATION.md -->
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=nunito:400,600,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <header class="header">
-    <nav class="nav">
+    <nav class="nav" aria-label="Hauptnavigation">
       <a href="index.html" class="logo">
-        <img src="assets/images/logo.jpg" alt="PPC Logo">
-        
+        <img src="assets/images/logo.jpg" alt="Penguin Power Communication">
       </a>
-                  <ul class="nav-links">
+      <ul class="nav-links">
         <li><a href="index.html" class="active">Start</a></li>
         <li><a href="security.html">Security</a></li>
         <li><a href="administration.html">Administration</a></li>
@@ -24,77 +35,40 @@
         <li><a href="partner.html">Partner</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Theme wechseln" title="Light / Dark">☀️</button>
-      <a href="https://malama.at" target="_blank" rel="noopener" class="malama-link" title="malama.at"><img src="assets/images/Malama_IT_Logo.jpg" alt="Malama IT" class="malama-logo"></a>
-      <button class="menu-toggle" aria-label="Menü">☰</button>
+      <div class="nav-actions">
+        <a href="tel:+436648585826" class="nav-phone" title="Jetzt anrufen">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+43 664 8585826</span>
+        </a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Dunkelmodus aktivieren">
+          <svg class="icon icon-sm icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon icon-sm icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <div class="hero-content">
-        <h1>IT die <span class="accent">funktioniert</span>.<br>Lösungen die entlasten.</h1>
-        <p class="lead">Sicherheit, der Sie wirklich vertrauen können. Persönlich. Verlässlich. Mitdenkend – seit über 20 Jahren.</p>
-        <div class="hero-buttons">
-          <a href="kontakt.html" class="btn btn-primary">Rückruf vereinbaren</a>
-          <a href="security.html" class="btn btn-outline">Leistungen ansehen</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="penguin-box">
-          <img src="assets/images/penguin.jpg" alt="Pinguin Logo" class="penguin-logo">
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>Das müssen Sie nicht mehr erleben</h2>
-        <p>Veraltete Systeme, Ausfälle und unklare IT-Kosten gehören der Vergangenheit an.</p>
-      </div>
-      <div class="grid grid-3">
-        <div class="card">
-          <div class="card-icon">⚡</div>
-          <h3>Moderne Infrastruktur</h3>
-          <p>Netzwerke und Systeme, die heute schon auf morgen vorbereitet sind – zukunftssicher und leistungsstark.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🛡️</div>
-          <h3>Ausfallsicherer Betrieb</h3>
-          <p>Wartung, die Ausfälle verhindert, bevor sie entstehen. Wir sind dran, bevor etwas hakt.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🔒</div>
-          <h3>Maßgeschneiderte Security</h3>
-          <p>Individuelle Sicherheitslösungen für echten Schutz statt nur Software-Schlacht.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>Was Sie bei uns NICHT erleben</h2>
-      </div>
-      <div class="features">
-        <div class="feature">
-          <div class="feature-check" style="background:#ef4444;color:#fff;">✕</div>
-          <div>
-            <strong>Vertröstungen</strong>
-            <p>Von einem „Lösungsversuch“ zum nächsten.</p>
+      <div class="hero-inner">
+        <div class="hero-content">
+          <h1>IT, die <span class="accent">funktioniert</span> – persönlich betreut in Ostösterreich.</h1>
+          <p class="lead">Sicherheit und Administration ohne Fachchinesisch. Verlässlich, mitdenkend und greifbar – seit über 20 Jahren.</p>
+          <div class="hero-buttons">
+            <a href="tel:+436648585826" class="btn btn-phone">
+              <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92z"/></svg>
+              Anrufen
+            </a>
+            <a href="kontakt.html" class="btn btn-primary">Rückruf anfordern</a>
+            <a href="security.html" class="btn btn-outline">Leistungen ansehen</a>
           </div>
         </div>
-        <div class="feature">
-          <div class="feature-check" style="background:#ef4444;color:#fff;">✕</div>
-          <div>
-            <strong>Unklare Aussagen</strong>
-            <p>Oder Fachbegriffe, die niemand versteht.</p>
-          </div>
-        </div>
-        <div class="feature">
-          <div class="feature-check" style="background:#ef4444;color:#fff;">✕</div>
-          <div>
-            <strong>Unerwartete Zusatzkosten</strong>
-            <p>Keine Überraschungen – transparente Preise.</p>
+        <div class="hero-visual">
+          <div class="penguin-box">
+            <img src="assets/images/penguin.jpg" alt="Der PPC-Pinguin – Ihr freundlicher IT-Begleiter" class="penguin-logo" width="280" height="280">
           </div>
         </div>
       </div>
@@ -102,38 +76,115 @@
 
     <section class="section">
       <div class="section-header">
-        <h2>Was Sie bei uns erwarten dürfen</h2>
+        <h2>Was wir für Sie übernehmen</h2>
+        <p>Zwei klare Schwerpunkte – damit Ihre IT läuft und Sie sich auf Ihr Geschäft konzentrieren können.</p>
       </div>
-      <div class="features">
-        <div class="feature">
-          <div class="feature-check">✓</div>
-          <div>
-            <strong>Individuelle IT-Beratung</strong>
-            <p>Lösungen, die wirklich zu Ihrem Betrieb passen – klar und verständlich.</p>
+      <div class="grid grid-2">
+        <a class="card" href="security.html">
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
+          <h3>Security</h3>
+          <p>Schutz vor Viren, unbefugten Zugriffen und Ausfällen – verständlich erklärt und zuverlässig betreut.</p>
+          <span class="card-link-hint">Mehr erfahren
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+        <a class="card" href="administration.html">
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Administration</h3>
+          <p>Wartung, Updates, Backups und Netzwerk – wir kümmern uns, bevor etwas hakt.</p>
+          <span class="card-link-hint">Mehr erfahren
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Der Unterschied, den Sie spüren</h2>
+        <p>Weniger Frust, mehr Klarheit – so soll IT sich anfühlen.</p>
+      </div>
+      <div class="compare">
+        <div class="compare-col">
+          <h3>
+            <span class="badge-icon badge-no" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </span>
+            Oft erlebt
+          </h3>
+          <ul>
+            <li>
+              <span class="badge-icon badge-no" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+              Vertröstungen von einem Versuch zum nächsten
+            </li>
+            <li>
+              <span class="badge-icon badge-no" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+              Fachbegriffe, die niemand versteht
+            </li>
+            <li>
+              <span class="badge-icon badge-no" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+              Unerwartete Zusatzkosten
+            </li>
+          </ul>
         </div>
-        <div class="feature">
-          <div class="feature-check">✓</div>
-          <div>
-            <strong>Transparente Preise</strong>
-            <p>Faire Kalkulation, keine versteckten Kosten, keine Fahrzeiten im Osten Österreichs.</p>
-          </div>
+        <div class="compare-col">
+          <h3>
+            <span class="badge-icon badge-ok" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            Bei PPC
+          </h3>
+          <ul>
+            <li>
+              <span class="badge-icon badge-ok" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span>
+              Klare Ansagen und ein fester Ansprechpartner
+            </li>
+            <li>
+              <span class="badge-icon badge-ok" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span>
+              Erklärungen in Alltagssprache
+            </li>
+            <li>
+              <span class="badge-icon badge-ok" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span>
+              Transparente Preise – keine Fahrzeiten im Osten Österreichs
+            </li>
+          </ul>
         </div>
-        <div class="feature">
-          <div class="feature-check">✓</div>
-          <div>
-            <strong>Rundum-Betreuung</strong>
-            <p>Von der ersten Installation bis zur laufenden Wartung – partnerschaftlich und lösungsorientiert.</p>
-          </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>So starten wir gemeinsam</h2>
+        <p>Unkompliziert, ohne Verkaufsdruck – Sie entscheiden in Ruhe.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Anruf oder Rückruf</h3>
+          <p>Sie melden sich – oder wir rufen Sie zu einer Zeit zurück, die passt.</p>
+        </div>
+        <div class="step">
+          <h3>Kurzes Gespräch</h3>
+          <p>Wir hören zu, klären Bedarf und zeigen Optionen mit Vor- und Nachteilen.</p>
+        </div>
+        <div class="step">
+          <h3>Klare Betreuung</h3>
+          <p>Umsetzung und laufende Pflege – partnerschaftlich und nachvollziehbar.</p>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="cta">
-        <h2>IT-Sorgen loslassen</h2>
-        <p>Kostenlos und unverbindlich Rückruf vereinbaren. Wir zeigen Optionen, Vor- und Nachteile und Kosten – Sie entscheiden.</p>
-        <a href="kontakt.html" class="btn btn-primary">Jetzt Rückruf anfordern</a>
+        <h2>Einfach anrufen – der Pinguin freut sich</h2>
+        <p>Kostenlos und unverbindlich. Wir zeigen Optionen und Kosten – Sie entscheiden.</p>
+        <div class="cta-actions">
+          <a href="tel:+436648585826" class="btn btn-phone">+43 664 8585826</a>
+          <a href="kontakt.html" class="btn btn-primary">Kontakt &amp; Erreichbarkeit</a>
+        </div>
       </div>
     </section>
   </main>
@@ -142,22 +193,31 @@
     <div class="footer-inner">
       <div>
         <h4>Penguin Power Communication</h4>
-        <p>Ing. Wolfgang Preier<br>IT-Dienstleister Österreich<br>+43 664 8585826<br>preier@ppc.at</p>
+        <p>Ing. Wolfgang Preier<br>IT-Dienstleister · Ostösterreich</p>
+        <p><a class="footer-phone" href="tel:+436648585826">+43 664 8585826</a></p>
+        <p><a class="footer-mail" href="mailto:preier@ppc.at">preier@ppc.at</a></p>
       </div>
       <div>
         <h4>Seiten</h4>
-        <p><a href="security.html">Security</a><br>
-        <a href="administration.html">Administration</a></p>
+        <p>
+          <a href="security.html">Security</a><br>
+          <a href="administration.html">Administration</a><br>
+          <a href="referenzen.html">Referenzen</a><br>
+          <a href="partner.html">Partner</a><br>
+          <a href="kontakt.html">Kontakt</a>
+        </p>
       </div>
       <div>
         <h4>Rechtliches</h4>
-        <p><a href="impressum.html">Impressum</a><br>
-        <a href="impressum.html#datenschutz">Datenschutz</a></p>
+        <p>
+          <a href="impressum.html">Impressum</a><br>
+          <a href="impressum.html#datenschutz">Datenschutz</a>
+        </p>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Penguin Power Communication · made with Grok</span>
-      <span>ppc.at</span>
+      <span>© 2026 Penguin Power Communication</span>
+      <span>ppc.at · v<span id="site-version">0.1.1.1</span></span>
     </div>
   </footer>
 

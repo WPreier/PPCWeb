@@ -4,16 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kontakt | Penguin Power Communication</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Kontakt zu Penguin Power Communication – anrufen oder E-Mail schreiben. Ing. Wolfgang Preier, Ostösterreich.">
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=nunito:400,600,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <header class="header">
-    <nav class="nav">
+    <nav class="nav" aria-label="Hauptnavigation">
       <a href="index.html" class="logo">
-        <img src="assets/images/logo.jpg" alt="PPC Logo">
+        <img src="assets/images/logo.jpg" alt="Penguin Power Communication">
       </a>
-                  <ul class="nav-links">
+      <ul class="nav-links">
         <li><a href="index.html">Start</a></li>
         <li><a href="security.html">Security</a></li>
         <li><a href="administration.html">Administration</a></li>
@@ -21,41 +33,63 @@
         <li><a href="partner.html">Partner</a></li>
         <li><a href="kontakt.html" class="active">Kontakt</a></li>
       </ul>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Theme wechseln" title="Light / Dark">☀️</button>
-      <a href="https://malama.at" target="_blank" rel="noopener" class="malama-link" title="malama.at"><img src="assets/images/Malama_IT_Logo.jpg" alt="Malama IT" class="malama-logo"></a>
-      <button class="menu-toggle" aria-label="Menü">☰</button>
+      <div class="nav-actions">
+        <a href="tel:+436648585826" class="nav-phone" title="Jetzt anrufen">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+43 664 8585826</span>
+        </a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Dunkelmodus aktivieren">
+          <svg class="icon icon-sm icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon icon-sm icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
     </nav>
   </header>
 
   <main>
     <div class="page-header">
       <h1>Kontakt</h1>
-      <p>Rückruf vereinbaren oder Nachricht senden – kostenlos und unverbindlich.</p>
+      <p>Am einfachsten per Telefon oder E-Mail – persönlich, direkt und ohne Formular.</p>
     </div>
 
     <section class="section">
-      <form class="form" action="#" method="post">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
+      <div class="contact-grid">
+        <div class="card contact-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3>Telefon</h3>
+          <p>Rückruf oder direkte Beratung</p>
+          <p style="margin-top:0.85rem;"><a href="tel:+436648585826">+43 664 8585826</a></p>
         </div>
-        <div class="form-group">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" name="email" required>
+        <div class="card contact-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+          </div>
+          <h3>E-Mail</h3>
+          <p>Für Anfragen und Unterlagen</p>
+          <p style="margin-top:0.85rem;"><a href="mailto:preier@ppc.at">preier@ppc.at</a></p>
         </div>
-        <div class="form-group">
-          <label for="phone">Telefon (optional)</label>
-          <input type="tel" id="phone" name="phone">
+        <div class="card contact-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Standort</h3>
+          <p>Sportplatzgasse 3<br>7441 Pilgersdorf<br>Betreuung in Ostösterreich</p>
         </div>
-        <div class="form-group">
-          <label for="message">Nachricht</label>
-          <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <div class="cta" style="margin-top:2.5rem;">
+        <h2>Ing. Wolfgang Preier</h2>
+        <p>Penguin Power Communication – Ihr persönlicher Ansprechpartner für Security und Administration.</p>
+        <div class="cta-actions">
+          <a href="tel:+436648585826" class="btn btn-phone">Jetzt anrufen</a>
+          <a href="mailto:preier@ppc.at" class="btn btn-primary">E-Mail schreiben</a>
         </div>
-        <button type="submit" class="btn btn-primary">Nachricht senden</button>
-      </form>
-      <p style="text-align:center;margin-top:2rem;color:var(--text-muted);font-size:0.95rem;">
-        Oder direkt: Ing. Wolfgang Preier · Penguin Power Communication
-      </p>
+      </div>
     </section>
   </main>
 
@@ -63,21 +97,30 @@
     <div class="footer-inner">
       <div>
         <h4>Penguin Power Communication</h4>
-        <p>Ing. Wolfgang Preier<br>IT-Dienstleister Österreich<br>+43 664 8585826<br>preier@ppc.at</p>
+        <p>Ing. Wolfgang Preier<br>IT-Dienstleister · Ostösterreich</p>
+        <p><a class="footer-phone" href="tel:+436648585826">+43 664 8585826</a></p>
+        <p><a class="footer-mail" href="mailto:preier@ppc.at">preier@ppc.at</a></p>
       </div>
       <div>
         <h4>Seiten</h4>
-        <p><a href="security.html">Security</a><br>
-        <a href="administration.html">Administration</a></p>
+        <p>
+          <a href="security.html">Security</a><br>
+          <a href="administration.html">Administration</a><br>
+          <a href="referenzen.html">Referenzen</a><br>
+          <a href="partner.html">Partner</a><br>
+          <a href="kontakt.html">Kontakt</a>
+        </p>
       </div>
       <div>
         <h4>Rechtliches</h4>
-        <p><a href="impressum.html">Impressum</a><br>
-        <a href="impressum.html#datenschutz">Datenschutz</a></p>
+        <p>
+          <a href="impressum.html">Impressum</a><br>
+          <a href="impressum.html#datenschutz">Datenschutz</a>
+        </p>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Penguin Power Communication · made with Grok</span>
+      <span>© 2026 Penguin Power Communication</span>
       <span>ppc.at</span>
     </div>
   </footer>
