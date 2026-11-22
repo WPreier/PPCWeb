@@ -6,6 +6,8 @@ Persönlicher IT-Dienstleister in Österreich: Administration und Security. Warm
 
 **Aktuelle Version:** siehe Datei [`VERSION`](VERSION) (Schema `0.1.1.<Patchnummer>`)
 
+**GitHub:** https://github.com/WPreier/PPCWeb · lokal unter `Meine Ablage\PPCNeu.2026\PPCWeb` (Remote `origin`)
+
 ## Dokumentation
 
 | Datei | Inhalt |

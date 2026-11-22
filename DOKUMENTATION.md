@@ -1,8 +1,32 @@
 # Dokumentation – PPCWeb (ppc.at)
 
-Stand: **2026-11-20** · Aktuelle Version: siehe Datei [`VERSION`](VERSION) und Footer auf der Startseite (`theweb/index.html`).
+Stand: **2026-11-22** · Aktuelle Version: siehe Datei [`VERSION`](VERSION) und Footer auf der Startseite (`theweb/index.html`).
 
 Diese Dokumentation beschreibt Aufbau, Versionierung, Pflege und Deployment der Website von **Penguin Power Communication**.
+
+---
+
+## 0. Lokal ↔ GitHub (Verbindung)
+
+| | |
+|---|---|
+| **Lokaler Pfad** | `…\Meine Ablage\PPCNeu.2026\PPCWeb` (Google Drive / Meine Ablage) |
+| **Remote** | `origin` → https://github.com/WPreier/PPCWeb.git |
+| **Branch** | `main` (tracked: `origin/main`) |
+| **Web-Inhalt** | Ordner `theweb/` |
+| **Versionierung** | aktiv (Schema `0.1.1.<Patch>`, Dateien unten) |
+
+Prüfung (PowerShell im Projektordner):
+
+```bash
+git remote -v
+git status -sb
+Get-Content VERSION
+```
+
+Wenn `origin` auf `WPreier/PPCWeb` zeigt und `main...origin/main` ohne „ahead/behind“ ist, sind lokal und GitHub synchron.
+
+**Hinweis:** Ein verschachtelter Ordner `PPCWeb/PPCWeb/` (Duplikat durch Sync) gehört **nicht** zum Repo und steht in `.gitignore`. Arbeiten Sie immer im äußeren Projektordner mit `theweb/`, `VERSION` und `.git`.
 
 ---
 
@@ -86,16 +110,16 @@ Das ist **kein** geheimes Systemverzeichnis, sondern ein **Internet-Standard**:
  └─────── Major 0 (Aufbau / Redesign-Phase)
 ```
 
-Aktuell: **0.1.1.3**
+Aktuell: **0.1.1.4**
 
 ### Wo steht die Version?
 
 | Ort | Inhalt |
 |---|---|
-| `VERSION` | Nur die Nummer, z. B. `0.1.1.3` |
+| `VERSION` | Nur die Nummer, z. B. `0.1.1.4` |
 | `theweb/index.html` | `<meta name="version" content="…">` und Footer |
 | `CHANGELOG.md` | Abschnitt `## [0.1.1.x] – JJJJ-MM-TT` |
-| Git-Tag (optional) | `v0.1.1.3` |
+| Git-Tag (optional) | `v0.1.1.4` |
 
 ### Neue Version veröffentlichen (Checkliste)
 
@@ -210,6 +234,7 @@ Siehe auch `README.md` und `CHANGELOG.md`.
 
 | Version | Datum | Kurzbeschreibung |
 |---|---|---|
+| 0.1.1.4 | 2026-11-22 | GitHub-Verbindung dokumentiert, Sync-Duplikat ignoriert |
 | 0.1.1.3 | 2026-11-20 | Profi-Erweiterungen (SEO, security.txt, 404, …) |
 | 0.1.1.2 | 2026-11-20 | Web-Dateien nach `theweb/` |
 | 0.1.1.1 | 2026-11-20 | Redesign warm, Phone-first, Doku & Versionierung |

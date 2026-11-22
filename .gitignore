@@ -3,10 +3,14 @@
 Thumbs.db
 desktop.ini
 
-# Editor
+# Editor / Cursor
 .vscode/
 .idea/
+.cursor/
 *.swp
+
+# Nested accidental copy (z. B. durch Sync) – nicht committen
+/PPCWeb/
 
 # Logs
 *.log

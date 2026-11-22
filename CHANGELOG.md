@@ -9,7 +9,18 @@ Bei jeder Veröffentlichung:
 1. Patchnummer erhöhen (Datei `VERSION`)
 2. Eintrag hier mit **Datum** und **Versionsnummer** ergänzen
 3. Versionsnummer in `theweb/index.html` aktualisieren (`meta name="version"` und Footer)
-4. Git-Commit (und Tag optional: `v0.1.1.3`)
+4. Git-Commit (und Tag optional: `v0.1.1.4`)
+
+---
+
+## [0.1.1.4] – 2026-11-22
+
+### Changed
+- Dokumentation: Abschnitt „Lokal ↔ GitHub“ (Pfad Meine Ablage, Remote, Sync-Prüfung)
+- `.gitignore`: `.cursor/` und verschachteltes `/PPCWeb/` ausgeschlossen
+
+### Notes
+- Versionierung war bereits aktiv (seit 0.1.1.1); dieser Patch bestätigt Verbindung und Absicherung gegen Sync-Duplikate
 
 ---
 
