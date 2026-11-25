@@ -1,0 +1,18 @@
+# Beispiel-Ausschnitt für SeDat (Reverse-Proxy) auf kmbhelp.
+# Ziel: statische Seite aus Seda, API an ppc-contact.
+#
+# Pfade/Keys an Ihre echte seda/sedat-Konfiguration anpassen
+# (siehe https://github.com/WPreier/seda und https://github.com/WPreier/sedat).
+
+# Pseudocode / Checkliste – konkrete TOML-Syntax der installierten SeDat-Version
+# in docs/CONFIG.md nachschlagen und hier übertragen:
+
+# 1) Site ppc.at → Upstream Seda (Static, z. B. 127.0.0.1:9080)
+# 2) Path-Prefix /api/ → Upstream ppc-contact (127.0.0.1:8690)
+# 3) Nur HTTPS öffentlich; HSTS aktiv
+# 4) Request-Body-Limit für /api/contact z. B. 64 KiB
+# 5) Keine öffentlichen Ports für mcon (:8687/:8688) oder ppc-contact (:8690)
+
+# Manueller Test ohne SeDat (nur lokal auf dem Server):
+#   curl -sS http://127.0.0.1:8690/healthz
+#   curl -sS http://127.0.0.1:8687/healthz   # falls M-Con health auf public

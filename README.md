@@ -8,6 +8,8 @@ Persönlicher IT-Dienstleister in Österreich: Administration und Security. Warm
 
 **GitHub:** https://github.com/WPreier/PPCWeb · lokal unter `Meine Ablage\PPCNeu.2026\PPCWeb` (Remote `origin`)
 
+**Kontaktformular:** [`docs/KONTAKTFORMULAR.md`](docs/KONTAKTFORMULAR.md) (Seda + M-Con + ALTCHA auf kmbhelp)
+
 ## Dokumentation
 
 | Datei | Inhalt |

@@ -1,6 +1,8 @@
 # Dokumentation – PPCWeb (ppc.at)
 
-Stand: **2026-11-22** · Aktuelle Version: siehe Datei [`VERSION`](VERSION) und Footer auf der Startseite (`theweb/index.html`).
+Stand: **2026-11-25** · Aktuelle Version: siehe Datei [`VERSION`](VERSION) und Footer auf der Startseite (`theweb/index.html`).
+
+**Kontaktformular / M-Con / Captcha:** ausführlich in [`docs/KONTAKTFORMULAR.md`](docs/KONTAKTFORMULAR.md).
 
 Diese Dokumentation beschreibt Aufbau, Versionierung, Pflege und Deployment der Website von **Penguin Power Communication**.
 
@@ -110,7 +112,7 @@ Das ist **kein** geheimes Systemverzeichnis, sondern ein **Internet-Standard**:
  └─────── Major 0 (Aufbau / Redesign-Phase)
 ```
 
-Aktuell: **0.1.1.4**
+Aktuell: **0.1.1.5**
 
 ### Wo steht die Version?
 
@@ -234,6 +236,7 @@ Siehe auch `README.md` und `CHANGELOG.md`.
 
 | Version | Datum | Kurzbeschreibung |
 |---|---|---|
+| 0.1.1.5 | 2026-11-25 | Kontaktformular + ALTCHA + M-Con-Bridge |
 | 0.1.1.4 | 2026-11-22 | GitHub-Verbindung dokumentiert, Sync-Duplikat ignoriert |
 | 0.1.1.3 | 2026-11-20 | Profi-Erweiterungen (SEO, security.txt, 404, …) |
 | 0.1.1.2 | 2026-11-20 | Web-Dateien nach `theweb/` |

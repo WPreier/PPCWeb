@@ -1,0 +1,21 @@
+# Leitet lokalen SMTP (Loopback) an den internen Mailserver weiter.
+# M-Con erlaubt tls_mode:none nur für Loopback – daher dieser Forwarder.
+[Unit]
+Description=SMTP forward 127.0.0.1:2525 -> 192.168.36.251:25
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/socat TCP-LISTEN:2525,bind=127.0.0.1,fork,reuseaddr TCP:192.168.36.251:25
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+User=nobody
+Group=nogroup
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,33 @@
+# PPC contact-bridge – Beispielkonfiguration
+# Kopie nach /etc/ppc-contact/config.yaml (0640, root:ppc-contact)
+
+listen: "127.0.0.1:8690"
+
+# Geheimnisse: besser über Env PPC_CONTACT_ALTCHA_SECRET / PPC_CONTACT_MCON_HMAC
+altcha_secret: "change-me-altcha-secret-min-16-chars"
+altcha_max_number: 100000
+altcha_expires_seconds: 600
+
+mcon:
+  base_url: "http://127.0.0.1:8687"
+  key_id: "ppcweb"
+  hmac_secret: "change-me-hmac-secret-min-16-chars"
+  from: "noreply@ppc.at"
+  to:
+    - "preier@ppc.at"
+  provider: ""          # leer = M-Con default (smtp-local)
+  timeout_seconds: 15
+
+rate_limit:
+  rps: 1
+  burst: 3
+  per_ip_window_seconds: 60
+  per_ip_max: 5
+
+# Mindest-/Maximalzeit zwischen Formular-Laden (Challenge) und Absenden
+form_min_seconds: 3
+form_max_seconds: 3600
+
+allowed_origins:
+  - "https://ppc.at"
+  - "https://www.ppc.at"

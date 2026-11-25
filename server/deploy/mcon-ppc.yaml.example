@@ -1,0 +1,71 @@
+# Ausschnitt / Vorlage für /etc/mcon/mcon.yaml auf kmbhelp (192.168.36.55)
+# Vollständige Basis: https://github.com/WPreier/M-Con/blob/main/configs/mcon.yaml.example
+
+server:
+  public_addr: "127.0.0.1:8687"
+  admin_addr: "127.0.0.1:8688"
+  tls:
+    enabled: false
+
+providers:
+  default: smtp-local
+  items:
+    smtp-local:
+      type: smtp
+      host: 127.0.0.1
+      port: 2525
+      tls_mode: none
+      username: ""
+      helo: ppc.at
+      timeout: 30s
+      fallback: ""
+    # Phase später – Beispiele (Secrets in secrets.yaml):
+    smtp-relay:
+      type: smtp
+      host: smtp.office365.com
+      port: 587
+      tls_mode: starttls
+      username: "noreply@ppc.at"
+      helo: ppc.at
+      timeout: 30s
+    graph:
+      type: graph
+      base_url: https://graph.microsoft.com/v1.0
+      send_as: noreply@ppc.at
+      timeout: 30s
+
+clients:
+  ppcweb:
+    allowed_from:
+      - noreply@ppc.at
+    allowed_providers: []
+    max_recipients: 5
+    max_message_bytes: 1048576
+    max_attachments: 0
+    rate_limit:
+      rps: 2
+      burst: 5
+    webhook_url: ""
+
+spam:
+  enabled: true
+  mode: ollama
+  timeout: 8s
+  on_timeout: send
+  on_error: send
+  threshold: 0.8
+  ollama:
+    base_url: http://127.0.0.1:11434
+    model: llama3.2
+    timeout: 6s
+
+test_ui:
+  enabled: true
+  client_key_id: ppcweb
+
+security:
+  hmac_window: 5m
+  nonce_ttl: 10m
+  admin_allow_cidrs:
+    - 127.0.0.1/32
+    - ::1/128

@@ -1,0 +1,33 @@
+[Unit]
+Description=PPCWeb contact-bridge (ALTCHA + M-Con)
+After=network-online.target mcon.service
+Wants=network-online.target
+Requires=mcon.service
+
+[Service]
+Type=simple
+User=ppc-contact
+Group=ppc-contact
+ExecStart=/usr/local/bin/ppc-contact -config /etc/ppc-contact/config.yaml
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+SystemCallArchitectures=native
+ReadOnlyPaths=/etc/ppc-contact
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

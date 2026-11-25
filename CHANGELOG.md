@@ -9,7 +9,23 @@ Bei jeder Veröffentlichung:
 1. Patchnummer erhöhen (Datei `VERSION`)
 2. Eintrag hier mit **Datum** und **Versionsnummer** ergänzen
 3. Versionsnummer in `theweb/index.html` aktualisieren (`meta name="version"` und Footer)
-4. Git-Commit (und Tag optional: `v0.1.1.4`)
+4. Git-Commit (und Tag optional: `v0.1.1.5`)
+
+---
+
+## [0.1.1.5] – 2026-11-25
+
+### Added
+- Kontaktformular mit ALTCHA (selbst gehostet), Honeypot, Timing- und Rate-Limits
+- Server-Bridge `server/contact-bridge` (ppc-contact) für HMAC-sichere Anbindung an M-Con
+- Deploy-Vorlagen: systemd Units, M-Con-Ausschnitt Phase-1-SMTP, SeDat-Hinweis
+- Dokumentation `docs/KONTAKTFORMULAR.md` (Setup, Tests, Sicherheit, SMTP→MS365 OAuth)
+
+### Changed
+- `kontakt.html` wieder mit Formular; Datenschutztext im Impressum angepasst
+
+### Notes
+- Phase-1-Versand: SMTP über lokalen Forwarder `127.0.0.1:2525` → `192.168.36.251:25` (M-Con erlaubt Klartext nur auf Loopback)
 
 ---
 

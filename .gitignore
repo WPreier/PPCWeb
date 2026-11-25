@@ -14,3 +14,7 @@ desktop.ini
 
 # Logs
 *.log
+
+# Go build artifacts
+server/contact-bridge/ppc-contact
+server/contact-bridge/ppc-contact.exe
