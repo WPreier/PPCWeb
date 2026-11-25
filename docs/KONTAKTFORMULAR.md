@@ -317,7 +317,8 @@ Analog `providers.gmail` + Refresh-Token in Secrets (siehe M-Con `configs/secret
 
 | Symptom | Prüfen |
 |---|---|
-| Captcha lädt nicht | SeDat `/api` Route, `curl challenge`, Browser-Konsole |
+| Captcha „Prüfung fehlgeschlagen“ | **Häufigste Ursache:** `/api/altcha/challenge` kommt nicht bei `ppc-contact` an (SeDat-Route fehlt → Seda liefert HTML-404). Siehe Diagnose unten. |
+| Captcha lädt nicht | SeDat `/api` Route, `curl challenge`, Browser-Konsole (Network-Tab) |
 | `send_failed` | `journalctl -u mcon -u ppc-contact -u smtp-forward` |
 | Mail kommt nicht | Relay `.251` Logs, SPF/From, M-Con Message-State |
 | 403 forbidden | `allowed_origins` in ppc-contact config |
@@ -325,6 +326,28 @@ Analog `providers.gmail` + Refresh-Token in Secrets (siehe M-Con `configs/secret
 
 ```bash
 journalctl -u ppc-contact -u mcon -u smtp-forward -f
+```
+
+### Diagnose: ALTCHA „Prüfung fehlgeschlagen“
+
+Im Browser (F12 → Netzwerk) den Request auf `/api/altcha/challenge` ansehen:
+
+| Antwort | Bedeutung | Fix |
+|---|---|---|
+| **404** + HTML | SeDat routet `/api` nicht → Seda antwortet | In SeDat Path `/api/` → `http://127.0.0.1:8690` |
+| **Connection failed** | ppc-contact down | `systemctl status ppc-contact` / enable --now |
+| **403** | Origin-Block (ältere Bridge) | Bridge ≥ 0.1.1.6; `allowed_origins` prüfend |
+| **200** + JSON mit `algorithm`, `challenge`, `salt`, `signature`, `maxNumber` | API ok | Widget neu laden; Cache leeren |
+
+Auf dem Server:
+
+```bash
+curl -sS -D- http://127.0.0.1:8690/healthz
+curl -sS http://127.0.0.1:8690/api/altcha/challenge | head -c 400
+# Erwartung: JSON, kein HTML
+
+# Von außen über die Domain (nach SeDat-Route):
+curl -sS -D- https://ppc.at/api/altcha/challenge | head -c 400
 ```
 
 ---

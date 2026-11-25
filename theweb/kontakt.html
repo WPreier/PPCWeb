@@ -120,9 +120,11 @@
                 name="altcha"
                 language="de"
                 hidelogo
-                strings='{"label":"Ich bin kein Bot – Prüfung läuft…","verifying":"Wird geprüft…","verified":"Geprüft","error":"Prüfung fehlgeschlagen"}'
+                refetchonexpire
+                strings='{"label":"Ich bin kein Bot","verifying":"Wird geprüft…","verified":"Geprüft","error":"Prüfung fehlgeschlagen – API prüfen"}'
               ></altcha-widget>
             </div>
+            <p id="altcha-help" class="form-status" data-kind="error" hidden></p>
             <p id="contact-status" class="form-status" hidden></p>
             <button type="submit" id="contact-submit" class="btn btn-primary">Nachricht senden</button>
           </form>

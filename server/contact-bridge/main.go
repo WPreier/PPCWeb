@@ -96,23 +96,28 @@ func main() {
 		_, _ = w.Write([]byte("ok"))
 	})
 	mux.HandleFunc("/api/altcha/challenge", func(w http.ResponseWriter, r *http.Request) {
+		// Challenges sind unkritisch (nur PoW-Start); Origin erst bei /api/contact prüfen.
+		if r.Method == http.MethodOptions {
+			setCORS(w, cfg, r)
+			w.WriteHeader(http.StatusNoContent)
+			return
+		}
 		if r.Method != http.MethodGet {
 			http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
 			return
 		}
-		if !originOK(cfg, r) {
-			http.Error(w, "forbidden", http.StatusForbidden)
-			return
-		}
+		setCORS(w, cfg, r)
 		ch, err := altcha.CreateChallenge(altcha.ChallengeOptions{
+			Algorithm: altcha.SHA256,
 			HMACKey:   cfg.AltchaSecret,
 			MaxNumber: int64(cfg.AltchaMaxNumber),
 		})
 		if err != nil {
+			log.Printf("altcha challenge: %v", err)
 			http.Error(w, "challenge failed", http.StatusInternalServerError)
 			return
 		}
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.Header().Set("Cache-Control", "no-store")
 		_ = json.NewEncoder(w).Encode(ch)
 	})
@@ -263,14 +268,14 @@ func originOK(cfg Config, r *http.Request) bool {
 	}
 	o := r.Header.Get("Origin")
 	if o == "" {
-		// same-origin navigations / some browsers omit Origin on GET
 		ref := r.Header.Get("Referer")
 		for _, a := range cfg.AllowedOrigins {
 			if strings.HasPrefix(ref, a) {
 				return true
 			}
 		}
-		return r.Method == http.MethodGet
+		// Same-Origin POST ohne Origin-Header (manche Browser)
+		return true
 	}
 	for _, a := range cfg.AllowedOrigins {
 		if o == a {
@@ -278,6 +283,26 @@ func originOK(cfg Config, r *http.Request) bool {
 		}
 	}
 	return false
+}
+
+func setCORS(w http.ResponseWriter, cfg Config, r *http.Request) {
+	o := r.Header.Get("Origin")
+	if o == "" {
+		return
+	}
+	allow := len(cfg.AllowedOrigins) == 0
+	for _, a := range cfg.AllowedOrigins {
+		if o == a {
+			allow = true
+			break
+		}
+	}
+	if allow {
+		w.Header().Set("Access-Control-Allow-Origin", o)
+		w.Header().Set("Vary", "Origin")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	}
 }
 
 func validateFields(req contactRequest) error {

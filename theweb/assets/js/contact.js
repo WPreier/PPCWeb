@@ -3,6 +3,7 @@
   if (!form) return;
 
   const statusEl = document.getElementById('contact-status');
+  const helpEl = document.getElementById('altcha-help');
   const submitBtn = document.getElementById('contact-submit');
   const issuedAt = document.getElementById('issued_at');
   issuedAt.value = String(Math.floor(Date.now() / 1000));
@@ -12,6 +13,49 @@
     statusEl.dataset.kind = kind || '';
     statusEl.hidden = !msg;
   };
+
+  const setHelp = (msg) => {
+    if (!helpEl) return;
+    helpEl.textContent = msg || '';
+    helpEl.hidden = !msg;
+  };
+
+  // Frühdiagnose: ohne erreichbare Challenge schlägt ALTCHA immer fehl.
+  (async () => {
+    try {
+      const res = await fetch('/api/altcha/challenge', {
+        method: 'GET',
+        headers: { Accept: 'application/json' },
+        credentials: 'same-origin',
+        cache: 'no-store'
+      });
+      const ct = (res.headers.get('content-type') || '').toLowerCase();
+      if (!res.ok) {
+        setHelp(
+          'Bot-Prüfung: Challenge-API antwortet mit HTTP ' +
+            res.status +
+            '. Bitte prüfen: ppc-contact läuft? SeDat routet /api/ → 127.0.0.1:8690?'
+        );
+        return;
+      }
+      if (!ct.includes('application/json')) {
+        setHelp(
+          'Bot-Prüfung: /api/altcha/challenge liefert kein JSON (vermutlich 404 von Seda). SeDat-Pfad /api/ fehlt oder zeigt noch auf Static.'
+        );
+        return;
+      }
+      const data = await res.json();
+      if (!data.algorithm || !data.challenge || !data.signature) {
+        setHelp('Bot-Prüfung: Challenge-JSON unvollständig. ppc-contact/ALTCHA-Konfiguration prüfen.');
+        return;
+      }
+      setHelp('');
+    } catch (e) {
+      setHelp(
+        'Bot-Prüfung: /api/altcha/challenge nicht erreichbar (Netzwerk). Auf dem Server: curl -sS http://127.0.0.1:8690/api/altcha/challenge'
+      );
+    }
+  })();
 
   form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
@@ -27,7 +71,7 @@
 
     const altchaInput = form.querySelector('input[name="altcha"]');
     if (!altchaInput || !altchaInput.value) {
-      setStatus('Bitte warten Sie, bis die Bot-Prüfung abgeschlossen ist.', 'error');
+      setStatus('Bitte die Bot-Prüfung abschließen (Häkchen setzen / warten bis „Geprüft“).', 'error');
       return;
     }
 
@@ -64,7 +108,8 @@
           send_failed: 'Versand vorübergehend nicht möglich. Bitte anrufen oder E-Mail schreiben.',
           invalid_email: 'Bitte eine gültige E-Mail-Adresse angeben.',
           invalid_message: 'Bitte eine Nachricht eingeben.',
-          invalid_name: 'Bitte Ihren Namen angeben.'
+          invalid_name: 'Bitte Ihren Namen angeben.',
+          forbidden: 'Anfrage von dieser Origin nicht erlaubt (allowed_origins).'
         };
         setStatus(map[data.error] || 'Senden fehlgeschlagen. Bitte später erneut versuchen.', 'error');
         submitBtn.disabled = false;

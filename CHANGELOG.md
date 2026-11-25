@@ -9,7 +9,18 @@ Bei jeder Veröffentlichung:
 1. Patchnummer erhöhen (Datei `VERSION`)
 2. Eintrag hier mit **Datum** und **Versionsnummer** ergänzen
 3. Versionsnummer in `theweb/index.html` aktualisieren (`meta name="version"` und Footer)
-4. Git-Commit (und Tag optional: `v0.1.1.5`)
+4. Git-Commit (und Tag optional: `v0.1.1.6`)
+
+---
+
+## [0.1.1.6] – 2026-11-25
+
+### Fixed
+- ALTCHA Challenge-Endpoint: keine Origin-Sperre mehr auf GET; CORS-Header; klareres JSON
+- Kontaktseite zeigt Diagnosehinweis, wenn `/api/altcha/challenge` fehlt oder HTML statt JSON liefert
+
+### Notes
+- „Prüfung fehlgeschlagen“ kommt fast immer von fehlendem SeDat-Routing `/api/` → ppc-contact
 
 ---
 

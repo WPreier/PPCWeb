@@ -112,7 +112,7 @@ Das ist **kein** geheimes Systemverzeichnis, sondern ein **Internet-Standard**:
  └─────── Major 0 (Aufbau / Redesign-Phase)
 ```
 
-Aktuell: **0.1.1.5**
+Aktuell: **0.1.1.6**
 
 ### Wo steht die Version?
 
@@ -236,6 +236,7 @@ Siehe auch `README.md` und `CHANGELOG.md`.
 
 | Version | Datum | Kurzbeschreibung |
 |---|---|---|
+| 0.1.1.6 | 2026-11-25 | ALTCHA Challenge-Diagnose / API-Routing-Hinweis |
 | 0.1.1.5 | 2026-11-25 | Kontaktformular + ALTCHA + M-Con-Bridge |
 | 0.1.1.4 | 2026-11-22 | GitHub-Verbindung dokumentiert, Sync-Duplikat ignoriert |
 | 0.1.1.3 | 2026-11-20 | Profi-Erweiterungen (SEO, security.txt, 404, …) |
