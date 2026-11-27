@@ -9,7 +9,23 @@ Bei jeder Veröffentlichung:
 1. Patchnummer erhöhen (Datei `VERSION`)
 2. Eintrag hier mit **Datum** und **Versionsnummer** ergänzen
 3. Versionsnummer in `theweb/index.html` aktualisieren (`meta name="version"` und Footer)
-4. Git-Commit (und Tag optional: `v0.1.1.6`)
+4. Git-Commit (und Tag optional: `v0.1.1.8`)
+
+---
+
+## [0.1.1.8] – 2026-11-27
+
+### Added
+- Security-Metas (CSP, Referrer) in allen HTML-Seiten
+- Erweiterte Apache-Header in `theweb/.htaccess` (COOP, CORP, Permissions-Policy, HSTS bei HTTPS, frame-ancestors)
+- `theweb/_headers` für CDN-/Static-Hosts
+- `assets/js/theme-init.js` (kein Inline-Theme-Skript mehr)
+- Doku `docs/SECURITY_HEADERS.md`, `docs/INSTALL_PPC_CONTACT.md`
+- Doku `docs/INSTALL_PPCWEB.md` (Neuinstallation & Update auf neuem Server: Website und Vollstack)
+- Lokale Dev-Helfer unter `server/dev/` (Static-Proxy-Skript, Beispiel-Configs)
+
+### Changed
+- Externe Links: `rel="noopener noreferrer"`
 
 ---
 

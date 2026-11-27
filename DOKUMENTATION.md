@@ -1,8 +1,11 @@
 # Dokumentation – PPCWeb (ppc.at)
 
-Stand: **2026-11-25** · Aktuelle Version: siehe Datei [`VERSION`](VERSION) und Footer auf der Startseite (`theweb/index.html`).
+Stand: **2026-11-27** · Aktuelle Version: siehe Datei [`VERSION`](VERSION) und Footer auf der Startseite (`theweb/index.html`).
 
-**Kontaktformular / M-Con / Captcha:** ausführlich in [`docs/KONTAKTFORMULAR.md`](docs/KONTAKTFORMULAR.md).
+**Neuinstallation / Update auf einem Server:** [`docs/INSTALL_PPCWEB.md`](docs/INSTALL_PPCWEB.md)  
+**Kontaktformular / M-Con / Captcha:** [`docs/KONTAKTFORMULAR.md`](docs/KONTAKTFORMULAR.md)  
+**ppc-contact auf kmbhelp:** [`docs/INSTALL_PPC_CONTACT.md`](docs/INSTALL_PPC_CONTACT.md)  
+**Security-Header (HTML + Server):** [`docs/SECURITY_HEADERS.md`](docs/SECURITY_HEADERS.md)
 
 Diese Dokumentation beschreibt Aufbau, Versionierung, Pflege und Deployment der Website von **Penguin Power Communication**.
 
@@ -112,7 +115,7 @@ Das ist **kein** geheimes Systemverzeichnis, sondern ein **Internet-Standard**:
  └─────── Major 0 (Aufbau / Redesign-Phase)
 ```
 
-Aktuell: **0.1.1.6**
+Aktuell: **0.1.1.8**
 
 ### Wo steht die Version?
 
@@ -160,14 +163,17 @@ Nunito über [Bunny Fonts](https://fonts.bunny.net) (Datenschutzhinweis im Impre
 
 ## 5. Deployment auf den eigenen Webserver
 
-Die Seite ist **fertig zum Hochladen** – keine Installation, kein `npm build`.
+**Ausführliche Neuinstallation und Updates (inkl. Vollstack Seda/SeDat/M-Con/ppc-contact):**  
+→ [`docs/INSTALL_PPCWEB.md`](docs/INSTALL_PPCWEB.md)
+
+Kurzfassung (nur Website): Die Seite ist **fertig zum Hochladen** – keine Installation, kein `npm build`.
 
 1. Lokal prüfen:
    ```bash
    cd theweb
    python -m http.server 8000
    ```
-2. Per FTP/SFTP/Panel **nur den Inhalt von `theweb/`** hochladen:
+2. Per FTP/SFTP/Panel bzw. `rsync` **nur den Inhalt von `theweb/`** hochladen:
    - alle `*.html`
    - Ordner `assets/`
    - Ordner `.well-known/`
@@ -177,7 +183,7 @@ Die Seite ist **fertig zum Hochladen** – keine Installation, kein `npm build`.
 
 **Tipp:** Nach dem Upload hart neu laden (Strg+F5).
 
-Markdown-Dateien (`README`, `CHANGELOG`, …) gehören **nicht** zwingend auf den öffentlichen Server.
+Markdown-Dateien (`README`, `CHANGELOG`, …) gehören **nicht** auf den öffentlichen Document Root.
 
 ---
 
@@ -236,6 +242,7 @@ Siehe auch `README.md` und `CHANGELOG.md`.
 
 | Version | Datum | Kurzbeschreibung |
 |---|---|---|
+| 0.1.1.8 | 2026-11-27 | Security-Header/CSP, Install-Dokus ppc-contact & PPCWeb-Server |
 | 0.1.1.6 | 2026-11-25 | ALTCHA Challenge-Diagnose / API-Routing-Hinweis |
 | 0.1.1.5 | 2026-11-25 | Kontaktformular + ALTCHA + M-Con-Bridge |
 | 0.1.1.4 | 2026-11-22 | GitHub-Verbindung dokumentiert, Sync-Duplikat ignoriert |

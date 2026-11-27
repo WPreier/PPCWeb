@@ -2,6 +2,11 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data:; connect-src 'self' https://fonts.bunny.net; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <script src="assets/js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Ing. Wolfgang Preier, Penguin Power Communication">
@@ -27,16 +32,6 @@
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=nunito:400,600,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      } catch (e) {}
-    })();
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -95,11 +90,11 @@
       <p>
         Mitglied der Wirtschaftskammer Burgenland<br>
         Gewerbebehörde: Bezirkshauptmannschaft Oberpullendorf<br>
-        Anwendbare Rechtsvorschriften: Gewerbeordnung (<a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener">ris.bka.gv.at</a>)
+        Anwendbare Rechtsvorschriften: Gewerbeordnung (<a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener noreferrer">ris.bka.gv.at</a>)
       </p>
       <p>
         Offline-Streitbeilegung: Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-        <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>.
+        <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>.
         Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
       </p>
 
@@ -150,7 +145,7 @@
         <li>Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung</li>
         <li>Datenübertragbarkeit</li>
         <li>Widerspruch gegen Verarbeitungen auf Basis berechtigter Interessen</li>
-        <li>Beschwerde bei der Österreichischen Datenschutzbehörde (<a href="https://www.dsb.gv.at" target="_blank" rel="noopener">www.dsb.gv.at</a>)</li>
+        <li>Beschwerde bei der Österreichischen Datenschutzbehörde (<a href="https://www.dsb.gv.at" target="_blank" rel="noopener noreferrer">www.dsb.gv.at</a>)</li>
       </ul>
       <p>
         Bei Fragen zum Datenschutz wenden Sie sich bitte an die oben genannten Kontaktdaten.

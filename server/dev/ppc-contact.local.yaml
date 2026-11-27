@@ -1,0 +1,28 @@
+listen: "127.0.0.1:8690"
+
+altcha_secret: "dev-altcha-secret-32chars-min!!"
+altcha_max_number: 50000
+altcha_expires_seconds: 600
+
+mcon:
+  base_url: "http://127.0.0.1:8687"
+  key_id: "ppcweb"
+  hmac_secret: "dev-hmac-secret-32chars-minimum!"
+  from: "noreply@ppc.at"
+  to:
+    - "preier@ppc.at"
+  provider: ""
+  timeout_seconds: 15
+
+rate_limit:
+  rps: 5
+  burst: 20
+  per_ip_window_seconds: 60
+  per_ip_max: 30
+
+form_min_seconds: 1
+form_max_seconds: 3600
+
+allowed_origins:
+  - "http://127.0.0.1:8001"
+  - "http://localhost:8001"

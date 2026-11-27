@@ -8,12 +8,16 @@ Persönlicher IT-Dienstleister in Österreich: Administration und Security. Warm
 
 **GitHub:** https://github.com/WPreier/PPCWeb · lokal unter `Meine Ablage\PPCNeu.2026\PPCWeb` (Remote `origin`)
 
-**Kontaktformular:** [`docs/KONTAKTFORMULAR.md`](docs/KONTAKTFORMULAR.md) (Seda + M-Con + ALTCHA auf kmbhelp)
+**Neuinstallation / Update (Server):** [`docs/INSTALL_PPCWEB.md`](docs/INSTALL_PPCWEB.md)  
+**Kontaktformular:** [`docs/KONTAKTFORMULAR.md`](docs/KONTAKTFORMULAR.md)  
+**ppc-contact installieren:** [`docs/INSTALL_PPC_CONTACT.md`](docs/INSTALL_PPC_CONTACT.md)  
+**Security-Header:** [`docs/SECURITY_HEADERS.md`](docs/SECURITY_HEADERS.md)
 
 ## Dokumentation
 
 | Datei | Inhalt |
 |---|---|
+| [`docs/INSTALL_PPCWEB.md`](docs/INSTALL_PPCWEB.md) | Neuer Server: installieren & updaten (Website + Vollstack) |
 | [`DOKUMENTATION.md`](DOKUMENTATION.md) | Aufbau, Pflege, Deploy, Checklisten |
 | [`CHANGELOG.md`](CHANGELOG.md) | Alle Änderungen mit Datum und Versionsnummer |
 | [`VERSION`](VERSION) | Aktuelle Versionsnummer (eine Zeile) |

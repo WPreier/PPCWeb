@@ -2,12 +2,17 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data:; connect-src 'self' https://fonts.bunny.net; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <script src="assets/js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Penguin Power Communication | IT, die funktioniert</title>
   <meta name="description" content="Persönlicher IT-Dienstleister in Ostösterreich. Administration und Security – verständlich, verlässlich, seit über 20 Jahren.">
   <meta name="author" content="Ing. Wolfgang Preier, Penguin Power Communication">
-  <meta name="version" content="0.1.1.6">
-  <!-- PPCWeb Version 0.1.1.6 | 2026-11-25 | siehe CHANGELOG.md und DOKUMENTATION.md -->
+  <meta name="version" content="0.1.1.8">
+  <!-- PPCWeb Version 0.1.1.8 | 2026-11-27 | siehe CHANGELOG.md und DOKUMENTATION.md -->
   <meta name="theme-color" content="#f0b429" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0d1b2a" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://ppc.at/">
@@ -59,16 +64,6 @@
       "https://malama.at"
     ]
   }
-  </script>
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      } catch (e) {}
-    })();
   </script>
 </head>
 <body>
@@ -268,7 +263,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Penguin Power Communication</span>
-      <span>ppc.at · v<span id="site-version">0.1.1.6</span></span>
+      <span>ppc.at · v<span id="site-version">0.1.1.8</span></span>
     </div>
   </footer>
 

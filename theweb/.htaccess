@@ -1,29 +1,55 @@
-# PPCWeb – Apache-Empfehlungen (nur wirksam, wenn Apache .htaccess erlaubt)
+# PPCWeb – Apache Security & Static Defaults
+# Wirksam nur, wenn AllowOverride + mod_headers/mod_rewrite erlaubt sind.
 
-Options -Indexes
+Options -Indexes -MultiViews
+ServerSignature Off
 AddDefaultCharset UTF-8
 
 <IfModule mod_mime.c>
   AddType image/svg+xml .svg
   AddType application/manifest+json .webmanifest
   AddType text/plain .txt
+  AddType application/json .json
 </IfModule>
 
 ErrorDocument 404 /404.html
 
 <IfModule mod_headers.c>
-  Header set X-Content-Type-Options "nosniff"
-  Header set X-Frame-Options "SAMEORIGIN"
-  Header set Referrer-Policy "strict-origin-when-cross-origin"
-  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-  Header set X-XSS-Protection "0"
+  # --- Core security headers ---
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(self), geolocation=(), gyroscope=(), hid=(), idle-detection=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-site"
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+  Header always set X-DNS-Prefetch-Control "off"
+  # Legacy XSS filter oft schädlich / obsolet – explizit aus
+  Header always set X-XSS-Protection "0"
+
+  # CSP (HTTP; frame-ancestors wirkt nur als Header, nicht als Meta)
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data:; connect-src 'self' https://fonts.bunny.net; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests"
+
+  # HSTS nur über HTTPS setzen (vermeidet Probleme bei lokalem HTTP)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # Keine Server-Versionsdetails in Custom-Headern (falls gesetzt)
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
 </IfModule>
 
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/javascript application/json image/svg+xml
 </IfModule>
 
-# HTTPS erzwingen (aktivieren, wenn SSL am Server konfiguriert ist):
+# Verstecke sensible Pfade (falls versehentlich mitdeployt)
+<IfModule mod_authz_core.c>
+  <FilesMatch "(?i)^(config|secrets).*\.(ya?ml|env|json)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+
+# HTTPS erzwingen (aktivieren, wenn TLS am vHost konfiguriert ist):
 # <IfModule mod_rewrite.c>
 #   RewriteEngine On
 #   RewriteCond %{HTTPS} !=on

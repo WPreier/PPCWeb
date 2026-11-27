@@ -18,3 +18,7 @@ desktop.ini
 # Go build artifacts
 server/contact-bridge/ppc-contact
 server/contact-bridge/ppc-contact.exe
+server/dev/mcon.exe
+server/dev/mcon-src/
+server/dev/mcon-data/
+*.exe

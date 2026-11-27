@@ -2,7 +2,7 @@
 
 Stand: **2026-11-25** · PPCWeb **0.1.1.5**  
 Serverziel: **kmbhelp** `192.168.36.55` (Seda/SeDat + M-Con + ppc-contact)  
-Mail Phase 1: **`192.168.36.251:25`** ohne Authentifizierung (über lokalen Forwarder)
+Mail Phase 1: `192.168.36.251:25` ohne Authentifizierung (über lokalen Forwarder)
 
 ---
 
@@ -72,6 +72,8 @@ Zusätzlich (Defense in Depth):
 ---
 
 ## 4. Server einrichten (kmbhelp) – Reihenfolge
+
+**Gesamtanleitung Neuinstallation & Update (jeder Server):** [`INSTALL_PPCWEB.md`](INSTALL_PPCWEB.md)
 
 > SSH von dieser Entwickler-Maschine auf `kmbhelp@192.168.36.55` war hier **nicht** möglich (kein Public-Key). Bitte die Schritte lokal auf dem Server ausführen.
 
@@ -145,32 +147,22 @@ curl -sS -H "Authorization: Bearer <admin-token>" \
 
 Oder `mcon-ctl` laut M-Con `docs/TESTING.md`.
 
-### 4.4 ppc-contact bauen und starten
+### 4.4 ppc-contact auf den Server bringen
+
+**Ausführliche Anleitung (git clone, Build, systemd, Updates, SCP-Alternative):**  
+→ **[`INSTALL_PPC_CONTACT.md`](INSTALL_PPC_CONTACT.md)**
+
+Kurzfassung:
 
 ```bash
-cd /pfad/zum/PPCWeb/server/contact-bridge
-go mod tidy
-go build -o ppc-contact .
-
-sudo useradd --system --home-dir /nonexistent --shell /usr/sbin/nologin ppc-contact 2>/dev/null || true
-sudo install -d -o root -g ppc-contact -m 0750 /etc/ppc-contact
+# auf kmbhelp
+cd /opt
+git clone https://github.com/WPreier/PPCWeb.git ppcweb
+cd /opt/ppcweb && git checkout v0.1.1.8
+cd server/contact-bridge
+go mod tidy && go build -o ppc-contact .
 sudo install -m 0755 ppc-contact /usr/local/bin/ppc-contact
-sudo cp config.example.yaml /etc/ppc-contact/config.yaml
-sudo chmod 0640 /etc/ppc-contact/config.yaml
-sudo chown root:ppc-contact /etc/ppc-contact/config.yaml
-
-# In config.yaml setzen:
-# - altcha_secret (openssl rand -hex 24)
-# - mcon.hmac_secret = dasselbe wie clients.ppcweb.hmac_secret
-# - mcon.key_id = ppcweb
-# - mcon.from / to
-# - allowed_origins https://ppc.at
-
-sudo cp ../../server/deploy/ppc-contact.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable --now ppc-contact
-curl -sS http://127.0.0.1:8690/healthz
-curl -sS http://127.0.0.1:8690/api/altcha/challenge
+# Config + systemd: siehe INSTALL_PPC_CONTACT.md Abschnitte 5–8
 ```
 
 ### 4.5 Website nach Seda laden
@@ -183,9 +175,9 @@ In der SeDat-Konfiguration Path-Prefix `/api/` auf `http://127.0.0.1:8690` legen
 
 **Gesamttest von außen:**
 
-1. https://ppc.at/kontakt.html öffnen  
-2. Formular ausfüllen, ALTCHA abwarten, absenden  
-3. Mail an `preier@ppc.at` prüfen  
+1. https://ppc.at/kontakt.html öffnen
+2. Formular ausfüllen, ALTCHA abwarten, absenden
+3. Mail an `preier@ppc.at` prüfen
 4. M-Con Admin: Message-Status `sent`
 
 ---
@@ -202,7 +194,7 @@ In der SeDat-Konfiguration Path-Prefix `/api/` auf `http://127.0.0.1:8690` legen
 | T6 | POST mit gefülltem Honeypot | 202, **keine** Mail |
 | T7 | Browser-Formular gültig | 202, Mail kommt an |
 | T8 | 10× schnell absenden | irgendwann 429 |
-| T9 | Absenden in &lt;3 s | 400 `too_fast` |
+| T9 | Absenden in <3 s | 400 `too_fast` |
 
 ---
 
@@ -251,13 +243,13 @@ Lernen: API-Keys rotieren, Webhooks (Delivery), Kostenlimits.
 
 Schritte zum Lernen:
 
-1. Portal https://entra.microsoft.com → App registrieren  
-2. API-Berechtigung Microsoft Graph **Application**: `Mail.Send`  
-3. Admin-Zustimmung erteilen  
-4. Client Secret erzeugen (Ablauf notieren)  
-5. Mailbox/`send_as` muss der App das Senden erlauben (Exchange Application Access Policy empfohlen)  
-6. In M-Con Secrets eintragen, `systemctl reload` bzw. Admin-Reload  
-7. Testsend über `mcon-ctl` / Admin test/send  
+1. Portal https://entra.microsoft.com → App registrieren
+2. API-Berechtigung Microsoft Graph **Application**: `Mail.Send`
+3. Admin-Zustimmung erteilen
+4. Client Secret erzeugen (Ablauf notieren)
+5. Mailbox/`send_as` muss der App das Senden erlauben (Exchange Application Access Policy empfohlen)
+6. In M-Con Secrets eintragen, `systemctl reload` bzw. Admin-Reload
+7. Testsend über `mcon-ctl` / Admin test/send
 
 Dokumentation Microsoft: „Get access without a user“ / Client Credentials + Graph `sendMail`.
 
@@ -298,7 +290,7 @@ Analog `providers.gmail` + Refresh-Token in Secrets (siehe M-Con `configs/secret
 |---|---|
 | ALTCHA | PoW, ohne Tracking |
 | Honeypot | stille Annahme |
-| Timing | &lt;3 s verwerfen |
+| Timing | <3 s verwerfen |
 | Rate-Limit | pro IP in ppc-contact + M-Con client rate_limit |
 | M-Con Spam | Ollama/OpenRouter optional |
 | Dedupe / Idempotenz | M-Con eingebaut |
@@ -368,8 +360,9 @@ curl -sS -D- https://ppc.at/api/altcha/challenge | head -c 400
 ## 10. Was Sie als Nächstes tun (kurz)
 
 1. Auf **kmbhelp** einloggen (SSH-Key einrichten, falls nötig).  
-2. Abschnitte **4.2 → 4.6** der Reihe nach umsetzen.  
-3. Testplan **Abschnitt 5** abhaken.  
-4. Später Versandstufe B–D nach Bedarf (Abschnitt 6).  
+2. **ppc-contact installieren:** [`INSTALL_PPC_CONTACT.md`](INSTALL_PPC_CONTACT.md)  
+3. Abschnitte **4.2 → 4.6** (SMTP, M-Con, Seda, SeDat) umsetzen.  
+4. Testplan **Abschnitt 5** abhaken.  
+5. Später Versandstufe B–D nach Bedarf (Abschnitt 6).  
 
 Bei Fragen zu M-Con-API/Config: Upstream-Doku in https://github.com/WPreier/M-Con (`docs/API.md`, `CONFIG.md`, `INSTALL.md`, `TESTING.md`).

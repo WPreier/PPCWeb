@@ -1,0 +1,96 @@
+server:
+  public_addr: "127.0.0.1:8687"
+  admin_addr: "127.0.0.1:8688"
+  read_timeout: 15s
+  write_timeout: 30s
+  idle_timeout: 60s
+  shutdown_timeout: 20s
+  max_body_bytes: 26214400
+  watchdog_interval: 10s
+  tls:
+    enabled: false
+
+paths:
+  data_dir: ./mcon-data
+  db_file: ./mcon-data/mcon.db
+  archive_dir: ./mcon-data/archive
+  tmp_dir: ./mcon-data/tmp
+  backup_dir: ./mcon-data/backups
+
+log:
+  level: info
+  syslog:
+    enabled: false
+
+metrics:
+  enabled: false
+
+queue:
+  workers: 1
+  poll_interval: 500ms
+  lease: 60s
+  max_attempts: 3
+  backoff_initial: 2s
+  backoff_max: 30s
+  backoff_multiplier: 2
+
+circuit_breaker:
+  failure_threshold: 5
+  cooldown: 30s
+
+spam:
+  enabled: false
+  mode: ollama
+  timeout: 8s
+  on_timeout: send
+  on_error: send
+  threshold: 0.8
+  ollama:
+    base_url: http://127.0.0.1:11434
+    model: llama3.2
+    timeout: 6s
+
+providers:
+  default: discard-ok
+  items:
+    discard-ok:
+      type: discard
+      mode: success
+
+clients:
+  ppcweb:
+    allowed_from:
+      - noreply@ppc.at
+    allowed_providers: []
+    max_recipients: 5
+    max_message_bytes: 1048576
+    max_attachments: 0
+    rate_limit:
+      rps: 10
+      burst: 20
+    webhook_url: ""
+
+archive:
+  enabled: true
+
+idempotency:
+  ttl: 24h
+
+security:
+  hmac_window: 5m
+  nonce_ttl: 10m
+  admin_allow_cidrs:
+    - 127.0.0.1/32
+    - ::1/128
+
+dedupe:
+  enabled: true
+  window: 10m
+
+backup:
+  enabled: false
+  interval: 24h
+
+test_ui:
+  enabled: true
+  client_key_id: ppcweb

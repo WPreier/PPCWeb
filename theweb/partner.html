@@ -2,6 +2,11 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data:; connect-src 'self' https://fonts.bunny.net; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <script src="assets/js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Ing. Wolfgang Preier, Penguin Power Communication">
@@ -27,16 +32,6 @@
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=nunito:400,600,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      } catch (e) {}
-    })();
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -83,7 +78,7 @@
           Unser Partner für ergänzende IT-Leistungen. Gemeinsam decken wir Bedarfe ab, die über den Alltag hinausgehen –
           mit klarer Abstimmung und einem Ansprechpartner für Sie.
         </p>
-        <a href="https://malama.at" class="btn btn-outline" style="margin-top:1.35rem;" target="_blank" rel="noopener">malama.at besuchen</a>
+        <a href="https://malama.at" class="btn btn-outline" style="margin-top:1.35rem;" target="_blank" rel="noopener noreferrer">malama.at besuchen</a>
       </div>
 
       <div class="cta" style="margin-top:2.5rem;">
